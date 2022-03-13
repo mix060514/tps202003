@@ -48,8 +48,8 @@ tr_x, va_x, tr_y, va_y = train_test_split(x, y)
 dtrain = xgb.DMatrix(tr_x, label=tr_y, enable_categorical=True)
 dvalid = xgb.DMatrix(va_x, label=va_y, enable_categorical=True)
 
-params = dict(objective='reg:squarederror', random_state=71, verbosity=1, 
-eval_metric='mae')
+# params = dict(objective='reg:squarederror', random_state=71, verbosity=1, eval_metric='mae')
+params = dict(objective='reg:pseudohubererror', random_state=71, verbosity=1, eval_metric='mae')
 num_round = 100000
 
 watchlist = [(dtrain, 'train'), (dvalid, 'eval')]
